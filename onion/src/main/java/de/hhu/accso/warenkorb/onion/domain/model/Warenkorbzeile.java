@@ -2,31 +2,29 @@ package de.hhu.accso.warenkorb.onion.domain.model;
 
 import java.util.UUID;
 
-import static de.hhu.accso.warenkorb.onion.domain.model.Preis.*;
-
 public class Warenkorbzeile {
-    private final UUID id;
-    private final Artikel artikel;
+    private final UUID warenkorbzeileId;
+    private final ArtikelId artikelId;
     private Anzahl anzahl;
-    private Preis gesamtPreis;
+    private final Preis preis;
 
     private final Anzahl maxArtikelAnzahl;
 
-    public Warenkorbzeile(UUID id, Artikel artikel, Anzahl anzahl, Preis gesamtPreis, Anzahl maxArtikelAnzahl) {
-        this.id = id;
-        this.artikel = artikel;
+    public Warenkorbzeile(UUID id, ArtikelId artikelId, Anzahl anzahl, Preis preis, Anzahl maxArtikelAnzahl) {
+        this.warenkorbzeileId = id;
+        this.artikelId = artikelId;
         this.anzahl = anzahl;
-        this.gesamtPreis = gesamtPreis;
+        this.preis = preis;
         this.maxArtikelAnzahl = maxArtikelAnzahl;
         validiere();
     }
 
-    public UUID getId() {
-        return id;
+    public UUID getWarenkorbzeileId() {
+        return warenkorbzeileId;
     }
 
-    public Artikel getArtikel() {
-        return artikel;
+    public ArtikelId getArtikelId() {
+        return artikelId;
     }
 
     public Anzahl getAnzahl() {
@@ -37,19 +35,17 @@ public class Warenkorbzeile {
         return maxArtikelAnzahl;
     }
 
-    public Preis getGesamtPreis() {
-        return gesamtPreis;
+    public Preis getPreis() {
+        return preis;
     }
 
-    public void erhoeheUmEins() {
-        this.anzahl = this.anzahl.erhoeheUmEins();
-        this.gesamtPreis = berechneGesamtpreis(artikel.preis(), anzahl);
+    public void erhoeheUm(Anzahl anzahl) {
+        this.anzahl = this.anzahl.erhoeheUm(anzahl);
     }
 
-    public void reduziereUmEins() {
-        if (this.anzahl.anzahl() > 1) {
-            this.anzahl = this.anzahl.reduziereUmEins();
-            this.gesamtPreis = berechneGesamtpreis(artikel.preis(), anzahl);
+    public void reduziereUm(Anzahl anzahl) {
+        if (this.anzahl.anzahl() > 0) {
+            this.anzahl = this.anzahl.reduziereUm(anzahl);
         } else {
             throw new IllegalStateException("Die Anzahl darf nicht kleiner als 1 sein");
         }
