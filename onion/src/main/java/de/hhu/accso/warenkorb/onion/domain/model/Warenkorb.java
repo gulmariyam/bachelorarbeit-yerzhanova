@@ -22,6 +22,19 @@ public class Warenkorb {
         this.maxEinkaufswert = maxEinkaufswert;
         this.validiere();
     }
+
+    public Warenkorb(WarenkorbId warenkorbId,
+                     KundeId kundeId,
+                     List<Warenkorbzeile> warenkorbzeilen,
+                     Preis gesamtPreis,
+                     Preis maxEinkaufswert) {
+        this.warenkorbId = warenkorbId;
+        this.kundeId = kundeId;
+        this.warenkorbzeilen = new ArrayList<>(warenkorbzeilen);
+        this.gesamtPreis = gesamtPreis;
+        this.maxEinkaufswert = maxEinkaufswert;
+        this.validiere();
+    }
     //------Getter--------//
     public WarenkorbId getWarenkorbId() {
         return warenkorbId;
@@ -29,6 +42,10 @@ public class Warenkorb {
 
     public KundeId getKundeId() {
         return kundeId;
+    }
+
+    public List<Warenkorbzeile> getWarenkorbzeilen() {
+        return warenkorbzeilen;
     }
 
     public Preis getGesamtPreis() {
@@ -82,28 +99,37 @@ public class Warenkorb {
         if(zeileMitArtikel != null) {
             zeileMitArtikel.erhoeheUm(anzahl);
         } else {
-            warenkorbzeilen.add(new Warenkorbzeile(UUID.randomUUID(), artikel.artikelId(), anzahl, artikel.preis(), zeileMitArtikel.getMaxArtikelAnzahl()));
+            warenkorbzeilen.add(new Warenkorbzeile(
+                UUID.randomUUID(),
+                artikel.artikelId(),
+                anzahl,
+                artikel.preis(),
+                zeileMitArtikel.getMaxArtikelAnzahl()));
         }
-        this.gesamtPreis = gesamtPreis.erhoeheUm(artikel.preis());
+        Preis gesamtpreisVonArtikel = Preis.berechneGesamtpreis(artikel.preis(), anzahl);
+        this.gesamtPreis = gesamtPreis.erhoeheUm(gesamtpreisVonArtikel);
         this.validiere();
     }
 
-    public void reduziere(ArtikelId artikelId, Preis preis, Anzahl anzahl) {
-        Warenkorbzeile zeileMitArtikel = findeZeileZu(artikelId);
+    public void reduziere(Artikel artikel, Anzahl anzahl) {
+        Warenkorbzeile zeileMitArtikel = findeZeileZu(artikel.artikelId());
         if (zeileMitArtikel != null) {
             zeileMitArtikel.reduziereUm(anzahl);
             if (zeileMitArtikel.getAnzahl() == null) {
                 warenkorbzeilen.remove(zeileMitArtikel);
             }
-            this.gesamtPreis = gesamtPreis.reduziereUm(preis);
+            Preis gesamtpreisVonArtikel = Preis.berechneGesamtpreis(artikel.preis(), anzahl);
+            this.gesamtPreis = gesamtPreis.reduziereUm(gesamtpreisVonArtikel);
         }
     }
 
     public void entferne(Artikel artikel) {
         Warenkorbzeile zeileMitArtikel = findeZeileZu(artikel.artikelId());
         if (zeileMitArtikel != null) {
+            Anzahl anzahlVonArtikel = zeileMitArtikel.getAnzahl();
+            Preis gesamtpreisVonArtikel = Preis.berechneGesamtpreis(artikel.preis(), anzahlVonArtikel);
             warenkorbzeilen.remove(zeileMitArtikel);
-            this.gesamtPreis = gesamtPreis.reduziereUm(artikel.preis());
+            this.gesamtPreis = gesamtPreis.reduziereUm(gesamtpreisVonArtikel);
         }
     }
 
