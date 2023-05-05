@@ -1,4 +1,6 @@
-package de.hhu.accso.warenkorb.onion.domain.model;
+package de.hhu.accso.warenkorb.onion.domain.model.preis;
+
+import de.hhu.accso.warenkorb.onion.domain.model.anzahl.Anzahl;
 
 import java.math.BigDecimal;
 

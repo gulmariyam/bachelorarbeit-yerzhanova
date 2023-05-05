@@ -1,8 +1,12 @@
-package de.hhu.accso.warenkorb.onion.domain.model;
+package de.hhu.accso.warenkorb.onion.domain.model.anzahl;
 
-import javax.validation.constraints.Min;
+public record Anzahl(int anzahl) {
+    public Anzahl {
+        if(anzahl < 0) {
+            throw new IllegalArgumentException("Die Anzahl darf nicht negativ sein.");
+        }
+    }
 
-public record Anzahl(@Min(value = 0, message = "Die Anzahl darf nicht negativ sein") int anzahl) {
     public Anzahl erhoeheUm(Anzahl anzahl) {
         return new Anzahl(this.anzahl + anzahl.anzahl);
     }

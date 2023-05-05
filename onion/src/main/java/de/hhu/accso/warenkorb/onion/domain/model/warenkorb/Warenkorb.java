@@ -1,7 +1,15 @@
-package de.hhu.accso.warenkorb.onion.domain.model;
+package de.hhu.accso.warenkorb.onion.domain.model.warenkorb;
 
+import de.hhu.accso.warenkorb.onion.domain.model.anzahl.Anzahl;
+import de.hhu.accso.warenkorb.onion.domain.model.artikel.Artikel;
+import de.hhu.accso.warenkorb.onion.domain.model.artikel.ArtikelID;
+import de.hhu.accso.warenkorb.onion.domain.model.kunde.KundeID;
+import de.hhu.accso.warenkorb.onion.domain.model.preis.Preis;
 import de.hhu.accso.warenkorb.onion.domain.model.stereotypes.AggregateRoot;
+import de.hhu.accso.warenkorb.onion.domain.model.warenkorbzeile.Warenkorbzeile;
+import de.hhu.accso.warenkorb.onion.domain.model.warenkorbzeile.WarenkorbzeileID;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -9,39 +17,41 @@ import java.util.UUID;
 
 @AggregateRoot
 public class Warenkorb {
-    private final WarenkorbId warenkorbId;
-    private final KundeId kundeId;
+    private final WarenkorbID warenkorbId;
+    private final KundeID kundeID;
     private final List<Warenkorbzeile> warenkorbzeilen;
     private Preis gesamtPreis;
     private final Preis maxEinkaufswert;
+    // ? private final Anzahl maxAnzahlProArtikel;
 
-    public Warenkorb(WarenkorbId warenkorbId, KundeId kundeId, Preis maxEinkaufswert) {
+    public Warenkorb(WarenkorbID warenkorbId, KundeID kundeID, Preis maxEinkaufswert) {
         this.warenkorbId = warenkorbId;
-        this.kundeId = kundeId;
+        this.kundeID = kundeID;
         this.warenkorbzeilen = new ArrayList<>();
+        this.gesamtPreis = new Preis(new BigDecimal(0));
         this.maxEinkaufswert = maxEinkaufswert;
         this.validiere();
     }
 
-    public Warenkorb(WarenkorbId warenkorbId,
-                     KundeId kundeId,
+    public Warenkorb(WarenkorbID warenkorbId,
+                     KundeID kundeID,
                      List<Warenkorbzeile> warenkorbzeilen,
                      Preis gesamtPreis,
                      Preis maxEinkaufswert) {
         this.warenkorbId = warenkorbId;
-        this.kundeId = kundeId;
+        this.kundeID = kundeID;
         this.warenkorbzeilen = new ArrayList<>(warenkorbzeilen);
         this.gesamtPreis = gesamtPreis;
         this.maxEinkaufswert = maxEinkaufswert;
         this.validiere();
     }
     //------Getter--------//
-    public WarenkorbId getWarenkorbId() {
+    public WarenkorbID getWarenkorbId() {
         return warenkorbId;
     }
 
-    public KundeId getKundeId() {
-        return kundeId;
+    public KundeID getKundeID() {
+        return kundeID;
     }
 
     public List<Warenkorbzeile> getWarenkorbzeilen() {
@@ -62,19 +72,19 @@ public class Warenkorb {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Warenkorb warenkorb = (Warenkorb) o;
-        return warenkorbId.equals(warenkorb.warenkorbId) && kundeId.equals(warenkorb.kundeId) && warenkorbzeilen.equals(warenkorb.warenkorbzeilen) && gesamtPreis.equals(warenkorb.gesamtPreis) && maxEinkaufswert.equals(warenkorb.maxEinkaufswert);
+        return warenkorbId.equals(warenkorb.warenkorbId) && kundeID.equals(warenkorb.kundeID) && warenkorbzeilen.equals(warenkorb.warenkorbzeilen) && gesamtPreis.equals(warenkorb.gesamtPreis) && maxEinkaufswert.equals(warenkorb.maxEinkaufswert);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(warenkorbId, kundeId, warenkorbzeilen, gesamtPreis, maxEinkaufswert);
+        return Objects.hash(warenkorbId, kundeID, warenkorbzeilen, gesamtPreis, maxEinkaufswert);
     }
 
     @Override
     public String toString() {
         return "Warenkorb{" +
             "id=" + warenkorbId +
-            ", kundeId=" + kundeId +
+            ", kundeID=" + kundeID +
             ", warenkorbzeilen=" + warenkorbzeilen +
             ", gesamtPreis=" + gesamtPreis +
             ", maxEinkaufswert=" + maxEinkaufswert +
@@ -87,7 +97,7 @@ public class Warenkorb {
     // artikel anzahl reduzieren -> gesamtpreis ändern
     // artikel löschen -> gesamtpreis ändern
 
-    public Warenkorbzeile findeZeileZu(ArtikelId artikelId) {
+    private Warenkorbzeile findeZeileZu(ArtikelID artikelId) {
         return warenkorbzeilen.stream()
             .filter(a -> a.getArtikelId().equals(artikelId))
             .findFirst()
@@ -95,13 +105,13 @@ public class Warenkorb {
     }
 
     public void fuegeHinzu(Artikel artikel, Anzahl anzahl) {
-        Warenkorbzeile zeileMitArtikel = findeZeileZu(artikel.artikelId());
+        Warenkorbzeile zeileMitArtikel = findeZeileZu(artikel.artikelID());
         if(zeileMitArtikel != null) {
             zeileMitArtikel.erhoeheUm(anzahl);
         } else {
             warenkorbzeilen.add(new Warenkorbzeile(
-                UUID.randomUUID(),
-                artikel.artikelId(),
+                new WarenkorbzeileID(UUID.randomUUID()),
+                artikel.artikelID(),
                 anzahl,
                 artikel.preis(),
                 zeileMitArtikel.getMaxArtikelAnzahl()));
@@ -112,7 +122,7 @@ public class Warenkorb {
     }
 
     public void reduziere(Artikel artikel, Anzahl anzahl) {
-        Warenkorbzeile zeileMitArtikel = findeZeileZu(artikel.artikelId());
+        Warenkorbzeile zeileMitArtikel = findeZeileZu(artikel.artikelID());
         if (zeileMitArtikel != null) {
             zeileMitArtikel.reduziereUm(anzahl);
             if (zeileMitArtikel.getAnzahl() == null) {
@@ -121,16 +131,18 @@ public class Warenkorb {
             Preis gesamtpreisVonArtikel = Preis.berechneGesamtpreis(artikel.preis(), anzahl);
             this.gesamtPreis = gesamtPreis.reduziereUm(gesamtpreisVonArtikel);
         }
+        validiere();
     }
 
     public void entferne(Artikel artikel) {
-        Warenkorbzeile zeileMitArtikel = findeZeileZu(artikel.artikelId());
+        Warenkorbzeile zeileMitArtikel = findeZeileZu(artikel.artikelID());
         if (zeileMitArtikel != null) {
             Anzahl anzahlVonArtikel = zeileMitArtikel.getAnzahl();
             Preis gesamtpreisVonArtikel = Preis.berechneGesamtpreis(artikel.preis(), anzahlVonArtikel);
             warenkorbzeilen.remove(zeileMitArtikel);
             this.gesamtPreis = gesamtPreis.reduziereUm(gesamtpreisVonArtikel);
         }
+        validiere();
     }
 
     private void validiere() {

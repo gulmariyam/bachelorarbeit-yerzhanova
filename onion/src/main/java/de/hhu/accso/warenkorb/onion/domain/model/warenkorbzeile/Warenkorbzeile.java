@@ -1,16 +1,18 @@
-package de.hhu.accso.warenkorb.onion.domain.model;
+package de.hhu.accso.warenkorb.onion.domain.model.warenkorbzeile;
 
-import java.util.UUID;
+import de.hhu.accso.warenkorb.onion.domain.model.anzahl.Anzahl;
+import de.hhu.accso.warenkorb.onion.domain.model.artikel.ArtikelID;
+import de.hhu.accso.warenkorb.onion.domain.model.preis.Preis;
 
 public class Warenkorbzeile {
-    private final UUID warenkorbzeileId;
-    private final ArtikelId artikelId;
+    private final WarenkorbzeileID warenkorbzeileId;
+    private final ArtikelID artikelId;
     private Anzahl anzahl;
     private final Preis preis;
 
     private final Anzahl maxArtikelAnzahl;
 
-    public Warenkorbzeile(UUID id, ArtikelId artikelId, Anzahl anzahl, Preis preis, Anzahl maxArtikelAnzahl) {
+    public Warenkorbzeile(WarenkorbzeileID id, ArtikelID artikelId, Anzahl anzahl, Preis preis, Anzahl maxArtikelAnzahl) {
         this.warenkorbzeileId = id;
         this.artikelId = artikelId;
         this.anzahl = anzahl;
@@ -19,11 +21,11 @@ public class Warenkorbzeile {
         validiere();
     }
 
-    public UUID getWarenkorbzeileId() {
+    public WarenkorbzeileID getWarenkorbzeileId() {
         return warenkorbzeileId;
     }
 
-    public ArtikelId getArtikelId() {
+    public ArtikelID getArtikelId() {
         return artikelId;
     }
 
@@ -41,6 +43,7 @@ public class Warenkorbzeile {
 
     public void erhoeheUm(Anzahl anzahl) {
         this.anzahl = this.anzahl.erhoeheUm(anzahl);
+        validiere();
     }
 
     public void reduziereUm(Anzahl anzahl) {
@@ -49,6 +52,7 @@ public class Warenkorbzeile {
         } else {
             throw new IllegalStateException("Die Anzahl darf nicht kleiner als 1 sein");
         }
+        validiere();
     }
 
     private void validiere(){
