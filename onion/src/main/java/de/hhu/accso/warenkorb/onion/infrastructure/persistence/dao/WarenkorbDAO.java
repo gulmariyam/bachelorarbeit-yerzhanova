@@ -1,6 +1,6 @@
-package de.hhu.accso.warenkorb.onion.infrastructure.dao;
+package de.hhu.accso.warenkorb.onion.infrastructure.persistence.dao;
 
-import de.hhu.accso.warenkorb.onion.infrastructure.dto.WarenkorbDTO;
+import de.hhu.accso.warenkorb.onion.infrastructure.persistence.dto.WarenkorbDTO;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -13,10 +13,6 @@ public class WarenkorbDAO {
 
     public static WarenkorbDAO getInstance() {
         return instance;
-    }
-
-    public void create(WarenkorbDTO warenkorbDTO) {
-        this.repo.put(warenkorbDTO.warenkorbId(), warenkorbDTO);
     }
 
     public WarenkorbDTO read(UUID id) {

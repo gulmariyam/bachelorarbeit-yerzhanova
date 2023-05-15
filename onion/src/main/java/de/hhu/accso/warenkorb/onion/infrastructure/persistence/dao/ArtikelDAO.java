@@ -1,6 +1,6 @@
-package de.hhu.accso.warenkorb.onion.infrastructure.dao;
+package de.hhu.accso.warenkorb.onion.infrastructure.persistence.dao;
 
-import de.hhu.accso.warenkorb.onion.infrastructure.dto.ArtikelDTO;
+import de.hhu.accso.warenkorb.onion.infrastructure.persistence.dto.ArtikelDTO;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -13,10 +13,6 @@ public class ArtikelDAO {
 
     public static ArtikelDAO getInstance() {
         return instance;
-    }
-
-    public void create(ArtikelDTO artikelDTO) {
-        this.repo.put(artikelDTO.artikelId(), artikelDTO);
     }
 
     public ArtikelDTO read(UUID id) {
