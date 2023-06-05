@@ -1,7 +1,7 @@
 package de.hhu.accso.warenkorb.clean.application.repository;
 
-import de.hhu.accso.warenkorb.clean.entity.warenkorb.Warenkorb;
-import de.hhu.accso.warenkorb.clean.entity.warenkorb.WarenkorbID;
+import de.hhu.accso.warenkorb.clean.entities.warenkorb.Warenkorb;
+import de.hhu.accso.warenkorb.clean.entities.warenkorb.WarenkorbID;
 import org.springframework.stereotype.Repository;
 
 @Repository

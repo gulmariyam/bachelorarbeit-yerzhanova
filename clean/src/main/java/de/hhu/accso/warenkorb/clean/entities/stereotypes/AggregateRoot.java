@@ -1,4 +1,4 @@
-package de.hhu.accso.warenkorb.clean.entity.stereotypes;
+package de.hhu.accso.warenkorb.clean.entities.stereotypes;
 
 import java.lang.annotation.*;
 

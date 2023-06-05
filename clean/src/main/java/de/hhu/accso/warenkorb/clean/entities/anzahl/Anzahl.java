@@ -1,4 +1,4 @@
-package de.hhu.accso.warenkorb.clean.entity.anzahl;
+package de.hhu.accso.warenkorb.clean.entities.anzahl;
 
 public record Anzahl(int anzahl) {
     public Anzahl {

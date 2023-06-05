@@ -1,9 +1,9 @@
-package de.hhu.accso.warenkorb.clean.entity.factory;
+package de.hhu.accso.warenkorb.clean.entities.factory;
 
-import de.hhu.accso.warenkorb.clean.entity.anzahl.Anzahl;
-import de.hhu.accso.warenkorb.clean.entity.artikel.Artikel;
-import de.hhu.accso.warenkorb.clean.entity.warenkorbzeile.Warenkorbzeile;
-import de.hhu.accso.warenkorb.clean.entity.warenkorbzeile.WarenkorbzeileID;
+import de.hhu.accso.warenkorb.clean.entities.anzahl.Anzahl;
+import de.hhu.accso.warenkorb.clean.entities.artikel.Artikel;
+import de.hhu.accso.warenkorb.clean.entities.warenkorbzeile.Warenkorbzeile;
+import de.hhu.accso.warenkorb.clean.entities.warenkorbzeile.WarenkorbzeileID;
 
 import java.util.UUID;
 

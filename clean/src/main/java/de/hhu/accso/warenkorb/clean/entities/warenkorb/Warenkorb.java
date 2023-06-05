@@ -1,13 +1,13 @@
-package de.hhu.accso.warenkorb.clean.entity.warenkorb;
+package de.hhu.accso.warenkorb.clean.entities.warenkorb;
 
-import de.hhu.accso.warenkorb.clean.entity.anzahl.Anzahl;
-import de.hhu.accso.warenkorb.clean.entity.artikel.Artikel;
-import de.hhu.accso.warenkorb.clean.entity.artikel.ArtikelID;
-import de.hhu.accso.warenkorb.clean.entity.kunde.KundeID;
-import de.hhu.accso.warenkorb.clean.entity.preis.Preis;
-import de.hhu.accso.warenkorb.clean.entity.stereotypes.AggregateRoot;
-import de.hhu.accso.warenkorb.clean.entity.warenkorbzeile.Warenkorbzeile;
-import de.hhu.accso.warenkorb.clean.entity.factory.WarenkorbzeileFactory;
+import de.hhu.accso.warenkorb.clean.entities.anzahl.Anzahl;
+import de.hhu.accso.warenkorb.clean.entities.artikel.Artikel;
+import de.hhu.accso.warenkorb.clean.entities.artikel.ArtikelID;
+import de.hhu.accso.warenkorb.clean.entities.kunde.KundeID;
+import de.hhu.accso.warenkorb.clean.entities.preis.Preis;
+import de.hhu.accso.warenkorb.clean.entities.stereotypes.AggregateRoot;
+import de.hhu.accso.warenkorb.clean.entities.warenkorbzeile.Warenkorbzeile;
+import de.hhu.accso.warenkorb.clean.entities.factory.WarenkorbzeileFactory;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;

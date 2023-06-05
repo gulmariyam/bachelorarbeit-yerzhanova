@@ -1,8 +1,8 @@
 package de.hhu.accso.warenkorb.clean.adapter.persistence.implementations;
 
 import de.hhu.accso.warenkorb.clean.application.repository.WarenkorbRepository;
-import de.hhu.accso.warenkorb.clean.entity.warenkorb.Warenkorb;
-import de.hhu.accso.warenkorb.clean.entity.warenkorb.WarenkorbID;
+import de.hhu.accso.warenkorb.clean.entities.warenkorb.Warenkorb;
+import de.hhu.accso.warenkorb.clean.entities.warenkorb.WarenkorbID;
 import de.hhu.accso.warenkorb.clean.adapter.persistence.dao.WarenkorbDAO;
 import de.hhu.accso.warenkorb.clean.adapter.persistence.dto.WarenkorbDTO;
 import de.hhu.accso.warenkorb.clean.adapter.persistence.mapper.WarenkorbDTOMapper;

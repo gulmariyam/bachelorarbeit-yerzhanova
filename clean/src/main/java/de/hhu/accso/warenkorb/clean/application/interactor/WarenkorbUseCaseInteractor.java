@@ -1,13 +1,13 @@
-package de.hhu.accso.warenkorb.clean.application;
+package de.hhu.accso.warenkorb.clean.application.interactor;
 
 import de.hhu.accso.warenkorb.clean.application.usecase.WarenkorbUseCase;
-import de.hhu.accso.warenkorb.clean.entity.anzahl.Anzahl;
-import de.hhu.accso.warenkorb.clean.entity.artikel.Artikel;
-import de.hhu.accso.warenkorb.clean.entity.artikel.ArtikelID;
-import de.hhu.accso.warenkorb.clean.entity.kunde.KundeID;
-import de.hhu.accso.warenkorb.clean.entity.preis.Preis;
-import de.hhu.accso.warenkorb.clean.entity.warenkorb.Warenkorb;
-import de.hhu.accso.warenkorb.clean.entity.warenkorb.WarenkorbID;
+import de.hhu.accso.warenkorb.clean.entities.anzahl.Anzahl;
+import de.hhu.accso.warenkorb.clean.entities.artikel.Artikel;
+import de.hhu.accso.warenkorb.clean.entities.artikel.ArtikelID;
+import de.hhu.accso.warenkorb.clean.entities.kunde.KundeID;
+import de.hhu.accso.warenkorb.clean.entities.preis.Preis;
+import de.hhu.accso.warenkorb.clean.entities.warenkorb.Warenkorb;
+import de.hhu.accso.warenkorb.clean.entities.warenkorb.WarenkorbID;
 import de.hhu.accso.warenkorb.clean.application.repository.ArtikelRepository;
 import de.hhu.accso.warenkorb.clean.application.repository.WarenkorbRepository;
 import org.springframework.stereotype.Service;
@@ -16,12 +16,12 @@ import java.math.BigDecimal;
 import java.util.UUID;
 
 @Service
-public class WarenkorbUseCaseImplementation implements WarenkorbUseCase {
+public class WarenkorbUseCaseInteractor implements WarenkorbUseCase {
     private final WarenkorbRepository warenkorbRepository;
     private final ArtikelRepository artikelRepository;
 
 
-    public WarenkorbUseCaseImplementation(WarenkorbRepository warenkorbRepository, ArtikelRepository artikelRepository) {
+    public WarenkorbUseCaseInteractor(WarenkorbRepository warenkorbRepository, ArtikelRepository artikelRepository) {
         this.warenkorbRepository = warenkorbRepository;
         this.artikelRepository = artikelRepository;
     }

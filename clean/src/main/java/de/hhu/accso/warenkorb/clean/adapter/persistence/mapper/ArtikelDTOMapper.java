@@ -1,6 +1,6 @@
 package de.hhu.accso.warenkorb.clean.adapter.persistence.mapper;
 
-import de.hhu.accso.warenkorb.clean.entity.artikel.Artikel;
+import de.hhu.accso.warenkorb.clean.entities.artikel.Artikel;
 import de.hhu.accso.warenkorb.clean.adapter.persistence.dto.ArtikelDTO;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;

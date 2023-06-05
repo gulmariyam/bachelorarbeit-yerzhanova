@@ -1,6 +1,6 @@
 package de.hhu.accso.warenkorb.clean.adapter.presentation.mapper;
 
-import de.hhu.accso.warenkorb.clean.entity.warenkorb.Warenkorb;
+import de.hhu.accso.warenkorb.clean.entities.warenkorb.Warenkorb;
 import de.hhu.accso.warenkorb.clean.adapter.presentation.models.WarenkorbModel;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;

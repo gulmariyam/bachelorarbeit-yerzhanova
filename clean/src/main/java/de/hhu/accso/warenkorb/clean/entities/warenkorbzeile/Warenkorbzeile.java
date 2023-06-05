@@ -1,8 +1,8 @@
-package de.hhu.accso.warenkorb.clean.entity.warenkorbzeile;
+package de.hhu.accso.warenkorb.clean.entities.warenkorbzeile;
 
-import de.hhu.accso.warenkorb.clean.entity.anzahl.Anzahl;
-import de.hhu.accso.warenkorb.clean.entity.artikel.ArtikelID;
-import de.hhu.accso.warenkorb.clean.entity.preis.Preis;
+import de.hhu.accso.warenkorb.clean.entities.anzahl.Anzahl;
+import de.hhu.accso.warenkorb.clean.entities.artikel.ArtikelID;
+import de.hhu.accso.warenkorb.clean.entities.preis.Preis;
 
 public class Warenkorbzeile {
     private final WarenkorbzeileID warenkorbzeileId;

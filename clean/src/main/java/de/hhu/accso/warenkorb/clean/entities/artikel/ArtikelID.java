@@ -1,4 +1,4 @@
-package de.hhu.accso.warenkorb.clean.entity.artikel;
+package de.hhu.accso.warenkorb.clean.entities.artikel;
 
 import java.util.UUID;
 

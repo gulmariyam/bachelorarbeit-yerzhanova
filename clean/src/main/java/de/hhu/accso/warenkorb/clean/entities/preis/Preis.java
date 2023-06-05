@@ -1,4 +1,4 @@
-package de.hhu.accso.warenkorb.clean.entity.preis;
+package de.hhu.accso.warenkorb.clean.entities.preis;
 
 import java.math.BigDecimal;
 
