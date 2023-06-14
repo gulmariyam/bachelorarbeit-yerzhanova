@@ -1,7 +1,7 @@
 package de.hhu.accso.warenkorb.hexagonal.adapter.in.web.mapper;
 
 import de.hhu.accso.warenkorb.hexagonal.adapter.in.web.models.WarenkorbModel;
-import de.hhu.accso.warenkorb.hexagonal.domain.warenkorb.Warenkorb;
+import de.hhu.accso.warenkorb.hexagonal.domain.model.warenkorb.Warenkorb;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
