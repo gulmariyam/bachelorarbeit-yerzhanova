@@ -1,4 +1,4 @@
-package de.hhu.accso.warenkorb.hexagonal.domain.kunde;
+package de.hhu.accso.warenkorb.hexagonal.domain.model.kunde;
 
 import java.util.UUID;
 

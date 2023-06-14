@@ -4,8 +4,8 @@ import de.hhu.accso.warenkorb.hexagonal.adapter.out.persistence.dao.ArtikelDAO;
 import de.hhu.accso.warenkorb.hexagonal.adapter.out.persistence.dto.ArtikelDTO;
 import de.hhu.accso.warenkorb.hexagonal.adapter.out.persistence.mapper.ArtikelDTOMapper;
 import de.hhu.accso.warenkorb.hexagonal.application.port.out.ArtikelRepository;
-import de.hhu.accso.warenkorb.hexagonal.domain.artikel.Artikel;
-import de.hhu.accso.warenkorb.hexagonal.domain.artikel.ArtikelID;
+import de.hhu.accso.warenkorb.hexagonal.domain.model.artikel.Artikel;
+import de.hhu.accso.warenkorb.hexagonal.domain.model.artikel.ArtikelID;
 
 public class ArtikelRepositoryImplementation implements ArtikelRepository {
 

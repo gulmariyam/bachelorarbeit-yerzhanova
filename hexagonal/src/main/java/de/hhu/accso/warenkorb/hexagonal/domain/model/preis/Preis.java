@@ -1,4 +1,4 @@
-package de.hhu.accso.warenkorb.hexagonal.domain.preis;
+package de.hhu.accso.warenkorb.hexagonal.domain.model.preis;
 
 import java.math.BigDecimal;
 

@@ -1,4 +1,4 @@
-package de.hhu.accso.warenkorb.hexagonal.domain.anzahl;
+package de.hhu.accso.warenkorb.hexagonal.domain.model.anzahl;
 
 public record Anzahl(int anzahl) {
     public Anzahl {

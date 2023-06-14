@@ -1,9 +1,9 @@
 package de.hhu.accso.warenkorb.hexagonal.domain.factory;
 
-import de.hhu.accso.warenkorb.hexagonal.domain.anzahl.Anzahl;
-import de.hhu.accso.warenkorb.hexagonal.domain.artikel.Artikel;
-import de.hhu.accso.warenkorb.hexagonal.domain.warenkorbzeile.Warenkorbzeile;
-import de.hhu.accso.warenkorb.hexagonal.domain.warenkorbzeile.WarenkorbzeileID;
+import de.hhu.accso.warenkorb.hexagonal.domain.model.anzahl.Anzahl;
+import de.hhu.accso.warenkorb.hexagonal.domain.model.artikel.Artikel;
+import de.hhu.accso.warenkorb.hexagonal.domain.model.warenkorbzeile.Warenkorbzeile;
+import de.hhu.accso.warenkorb.hexagonal.domain.model.warenkorbzeile.WarenkorbzeileID;
 
 import java.util.UUID;
 

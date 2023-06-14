@@ -1,9 +1,12 @@
-package de.hhu.accso.warenkorb.hexagonal.domain.artikel;
+package de.hhu.accso.warenkorb.hexagonal.domain.model.artikel;
 
-import de.hhu.accso.warenkorb.hexagonal.domain.preis.Preis;
+import de.hhu.accso.warenkorb.hexagonal.domain.model.preis.Preis;
 
 public record Artikel(ArtikelID artikelID, String name, Preis preis) {
     public Artikel {
+        if(artikelID == null) {
+            throw new IllegalArgumentException("Artikel darf nicht null sein.");
+        }
         if (preis == null) {
             throw new IllegalArgumentException("Preis darf nicht null sein.");
         }
