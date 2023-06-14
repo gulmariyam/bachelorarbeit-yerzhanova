@@ -4,8 +4,8 @@ import de.hhu.accso.warenkorb.hexagonal.adapter.out.persistence.dao.WarenkorbDAO
 import de.hhu.accso.warenkorb.hexagonal.adapter.out.persistence.dto.WarenkorbDTO;
 import de.hhu.accso.warenkorb.hexagonal.adapter.out.persistence.mapper.WarenkorbDTOMapper;
 import de.hhu.accso.warenkorb.hexagonal.application.port.out.WarenkorbRepository;
-import de.hhu.accso.warenkorb.hexagonal.domain.warenkorb.Warenkorb;
-import de.hhu.accso.warenkorb.hexagonal.domain.warenkorb.WarenkorbID;
+import de.hhu.accso.warenkorb.hexagonal.domain.model.warenkorb.Warenkorb;
+import de.hhu.accso.warenkorb.hexagonal.domain.model.warenkorb.WarenkorbID;
 
 public class WarenkorbRepositoryImplementation implements WarenkorbRepository {
     private final WarenkorbDAO warenkorbDAO;

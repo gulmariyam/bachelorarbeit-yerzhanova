@@ -1,7 +1,7 @@
 package de.hhu.accso.warenkorb.hexagonal.application.port.out;
 
-import de.hhu.accso.warenkorb.hexagonal.domain.warenkorb.Warenkorb;
-import de.hhu.accso.warenkorb.hexagonal.domain.warenkorb.WarenkorbID;
+import de.hhu.accso.warenkorb.hexagonal.domain.model.warenkorb.Warenkorb;
+import de.hhu.accso.warenkorb.hexagonal.domain.model.warenkorb.WarenkorbID;
 import org.springframework.stereotype.Repository;
 
 @Repository
