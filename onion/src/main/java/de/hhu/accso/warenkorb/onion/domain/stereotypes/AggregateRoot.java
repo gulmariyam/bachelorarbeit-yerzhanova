@@ -1,4 +1,4 @@
-package de.hhu.accso.warenkorb.onion.domain.model.stereotypes;
+package de.hhu.accso.warenkorb.onion.domain.stereotypes;
 
 import java.lang.annotation.*;
 

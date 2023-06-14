@@ -1,31 +1,29 @@
 package de.hhu.accso.warenkorb.onion.domain.model.warenkorb;
 
+import de.hhu.accso.warenkorb.onion.domain.factory.WarenkorbzeileFactory;
 import de.hhu.accso.warenkorb.onion.domain.model.anzahl.Anzahl;
 import de.hhu.accso.warenkorb.onion.domain.model.artikel.Artikel;
 import de.hhu.accso.warenkorb.onion.domain.model.artikel.ArtikelID;
 import de.hhu.accso.warenkorb.onion.domain.model.kunde.KundeID;
 import de.hhu.accso.warenkorb.onion.domain.model.preis.Preis;
-import de.hhu.accso.warenkorb.onion.domain.model.stereotypes.AggregateRoot;
+import de.hhu.accso.warenkorb.onion.domain.stereotypes.AggregateRoot;
 import de.hhu.accso.warenkorb.onion.domain.model.warenkorbzeile.Warenkorbzeile;
-import de.hhu.accso.warenkorb.onion.domain.model.warenkorbzeile.WarenkorbzeileID;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import java.util.UUID;
 
 @AggregateRoot
 public class Warenkorb {
-    private final WarenkorbID warenkorbId;
+    private final WarenkorbID warenkorbID;
     private final KundeID kundeID;
     private final List<Warenkorbzeile> warenkorbzeilen;
     private Preis gesamtPreis;
     private final Preis maxEinkaufswert;
-    // ? private final Anzahl maxAnzahlProArtikel;
 
     public Warenkorb(WarenkorbID warenkorbId, KundeID kundeID, Preis maxEinkaufswert) {
-        this.warenkorbId = warenkorbId;
+        this.warenkorbID = warenkorbId;
         this.kundeID = kundeID;
         this.warenkorbzeilen = new ArrayList<>();
         this.gesamtPreis = new Preis(new BigDecimal(0));
@@ -38,16 +36,16 @@ public class Warenkorb {
                      List<Warenkorbzeile> warenkorbzeilen,
                      Preis gesamtPreis,
                      Preis maxEinkaufswert) {
-        this.warenkorbId = warenkorbId;
+        this.warenkorbID = warenkorbId;
         this.kundeID = kundeID;
         this.warenkorbzeilen = new ArrayList<>(warenkorbzeilen);
         this.gesamtPreis = gesamtPreis;
         this.maxEinkaufswert = maxEinkaufswert;
         this.validiere();
     }
-    //------Getter--------//
-    public WarenkorbID getWarenkorbId() {
-        return warenkorbId;
+
+    public WarenkorbID getWarenkorbID() {
+        return warenkorbID;
     }
 
     public KundeID getKundeID() {
@@ -66,24 +64,23 @@ public class Warenkorb {
         return maxEinkaufswert;
     }
 
-    //------equals, hashcode, toString--------//
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Warenkorb warenkorb = (Warenkorb) o;
-        return warenkorbId.equals(warenkorb.warenkorbId) && kundeID.equals(warenkorb.kundeID) && warenkorbzeilen.equals(warenkorb.warenkorbzeilen) && gesamtPreis.equals(warenkorb.gesamtPreis) && maxEinkaufswert.equals(warenkorb.maxEinkaufswert);
+        return warenkorbID.equals(warenkorb.warenkorbID) && kundeID.equals(warenkorb.kundeID) && warenkorbzeilen.equals(warenkorb.warenkorbzeilen) && gesamtPreis.equals(warenkorb.gesamtPreis) && maxEinkaufswert.equals(warenkorb.maxEinkaufswert);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(warenkorbId, kundeID, warenkorbzeilen, gesamtPreis, maxEinkaufswert);
+        return Objects.hash(warenkorbID, kundeID, warenkorbzeilen, gesamtPreis, maxEinkaufswert);
     }
 
     @Override
     public String toString() {
         return "Warenkorb{" +
-            "id=" + warenkorbId +
+            "id=" + warenkorbID +
             ", kundeID=" + kundeID +
             ", warenkorbzeilen=" + warenkorbzeilen +
             ", gesamtPreis=" + gesamtPreis +
@@ -91,32 +88,25 @@ public class Warenkorb {
             '}';
     }
 
-    // Domain Methods //
-    // artikel hinzufügen
-    // artikel anzahl erhöhen -> gesamtpreis ändern
-    // artikel anzahl reduzieren -> gesamtpreis ändern
-    // artikel löschen -> gesamtpreis ändern
-
-    private Warenkorbzeile findeZeileZu(ArtikelID artikelId) {
+    public Warenkorbzeile findeZeileZu(ArtikelID artikelId) {
         return warenkorbzeilen.stream()
-            .filter(a -> a.getArtikelId().equals(artikelId))
+            .filter(a -> a.getArtikelID().equals(artikelId))
             .findFirst()
             .orElse(null);
     }
 
     public void fuegeHinzu(Artikel artikel, Anzahl anzahl) {
         Warenkorbzeile zeileMitArtikel = findeZeileZu(artikel.artikelID());
+
         if(zeileMitArtikel != null) {
             zeileMitArtikel.erhoeheUm(anzahl);
         } else {
-            warenkorbzeilen.add(new Warenkorbzeile(
-                new WarenkorbzeileID(UUID.randomUUID()),
-                artikel.artikelID(),
-                anzahl,
-                artikel.preis(),
-                zeileMitArtikel.getMaxArtikelAnzahl()));
+            warenkorbzeilen.add(WarenkorbzeileFactory.neueWarenkorbzeileFuer(artikel, anzahl));
         }
-        Preis gesamtpreisVonArtikel = Preis.berechneGesamtpreis(artikel.preis(), anzahl);
+        // Berechnung des Gesammtpreise ggf. auf Basis des Istzustandes der Warenkorbzeilen.
+        // Der GesamtPreis könnte auch einfach ein getter mit entpsrechender Funktion sein.
+        // Nur ein Idee.
+        Preis gesamtpreisVonArtikel = berechneGesamtpreis(artikel.preis(), anzahl);
         this.gesamtPreis = gesamtPreis.erhoeheUm(gesamtpreisVonArtikel);
         this.validiere();
     }
@@ -128,7 +118,7 @@ public class Warenkorb {
             if (zeileMitArtikel.getAnzahl() == null) {
                 warenkorbzeilen.remove(zeileMitArtikel);
             }
-            Preis gesamtpreisVonArtikel = Preis.berechneGesamtpreis(artikel.preis(), anzahl);
+            Preis gesamtpreisVonArtikel = berechneGesamtpreis(artikel.preis(), anzahl);
             this.gesamtPreis = gesamtPreis.reduziereUm(gesamtpreisVonArtikel);
         }
         validiere();
@@ -138,14 +128,31 @@ public class Warenkorb {
         Warenkorbzeile zeileMitArtikel = findeZeileZu(artikel.artikelID());
         if (zeileMitArtikel != null) {
             Anzahl anzahlVonArtikel = zeileMitArtikel.getAnzahl();
-            Preis gesamtpreisVonArtikel = Preis.berechneGesamtpreis(artikel.preis(), anzahlVonArtikel);
+            Preis gesamtpreisVonArtikel = berechneGesamtpreis(artikel.preis(), anzahlVonArtikel);
             warenkorbzeilen.remove(zeileMitArtikel);
             this.gesamtPreis = gesamtPreis.reduziereUm(gesamtpreisVonArtikel);
         }
         validiere();
     }
 
+    private static Preis berechneGesamtpreis(Preis einzelPreis, Anzahl anzahl) {
+        BigDecimal gesamtBetrag = einzelPreis.betrag().multiply(new BigDecimal(anzahl.anzahl()));
+        return new Preis(gesamtBetrag);
+    }
+
     private void validiere() {
+        if (warenkorbID == null) {
+            throw new IllegalArgumentException("WarenkorbzeileID darf nicht null sein.");
+        }
+        if (kundeID == null) {
+            throw new IllegalArgumentException("KundeID darf nicht null sein.");
+        }
+        if (gesamtPreis == null) {
+            throw new IllegalArgumentException("Gesamt Preis darf nicht null sein.");
+        }
+        if (maxEinkaufswert == null) {
+            throw new IllegalArgumentException("Maximaler Einkaufswert darf nicht null sein.");
+        }
         if (getGesamtPreis().istGroesserAls(maxEinkaufswert)) {
             throw new IllegalStateException("Maximaler Einkaufswert ist überschritten.");
         }
