@@ -13,6 +13,8 @@ public class GetWarenkorbService implements GetWarenkorbUseCase {
     public GetWarenkorbService(WarenkorbRepository warenkorbRepository) {
         this.warenkorbRepository = warenkorbRepository;
     }
+
+    @Override
     public Warenkorb getWarenkorb(UUID warenkorb) {
         WarenkorbID warenkorbID = new WarenkorbID(warenkorb);
         return warenkorbRepository.findeMit(warenkorbID);

@@ -27,6 +27,7 @@ public class LegeArtikelInDenWarenkorbService implements LegeArtikelInDenWarenko
         this.lagerRepository = lagerRepository;
     }
 
+    @Override
     public void legeArtikelInDenWarenkorb(UUID artikelId, int anzahl, UUID warenkorbID) {
         Warenkorb warenkorb =  warenkorbRepository.findeMit(new WarenkorbID(warenkorbID));
         Artikel artikel = artikelRepository.findeMit(new ArtikelID(artikelId));

@@ -17,6 +17,7 @@ public class ErstelleWarenkorbFuerKundeService implements ErstelleWarenkorbFuerK
         this.warenkorbRepository = warenkorbRepository;
     }
 
+    @Override
     public void erstelleWarenkorbFuerKunde(UUID warenkorbID, UUID kundeID, BigDecimal preis) {
         Preis maxEinkaufswert = new Preis(preis);
         Warenkorb warenkorb = new Warenkorb(

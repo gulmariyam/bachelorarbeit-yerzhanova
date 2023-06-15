@@ -27,6 +27,7 @@ public class ReduziereAnzahlVonArtikelInDemWarenkorbService implements Reduziere
         this.lagerRepository = lagerRepository;
     }
 
+    @Override
     public void reduziereAnzahlVonArtikelInDemWarenkorb(UUID artikelId, int anzahl, UUID warenkorbID) {
         Warenkorb warenkorb =  warenkorbRepository.findeMit(new WarenkorbID(warenkorbID));
         Artikel artikel = artikelRepository.findeMit(new ArtikelID(artikelId));
