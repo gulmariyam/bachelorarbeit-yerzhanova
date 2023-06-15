@@ -1,8 +1,8 @@
 package de.hhu.accso.warenkorb.clean.adapter.presentation.api;
 
-import de.hhu.accso.warenkorb.clean.application.usecase.WarenkorbUseCase;
 import de.hhu.accso.warenkorb.clean.adapter.presentation.mapper.WarenkorbModelMapper;
 import de.hhu.accso.warenkorb.clean.adapter.presentation.models.WarenkorbModel;
+import de.hhu.accso.warenkorb.clean.application.usecase.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,10 +15,22 @@ import java.util.UUID;
 @RequestMapping("/warenkorb")
 @SessionAttributes("warenkorbID")
 public class WarenkorbController {
-    private final WarenkorbUseCase warenkorbUseCase;
+    private final GetWarenkorbUseCase getWarenkorbUseCase;
+    private final ErstelleWarenkorbFuerKundeUseCase erstelleWarenkorbFuerKundeUseCase;
+    private final LegeArtikelInDenWarenkorbUseCase legeArtikelInDenWarenkorbUseCase;
+    private final ReduziereAnzahlVonArtikelInDemWarenkorbUseCase reduziereAnzahlVonArtikelInDemWarenkorbUseCase;
+    private final EntferneArtikelAusDemWarenkorbUseCase entferneArtikelAusDemWarenkorbUseCase;
 
-    public WarenkorbController(WarenkorbUseCase applicationService) {
-        this.warenkorbUseCase = applicationService;
+    public WarenkorbController(GetWarenkorbUseCase getWarenkorbUseCase,
+                               ErstelleWarenkorbFuerKundeUseCase erstelleWarenkorbFuerKundeUseCase,
+                               LegeArtikelInDenWarenkorbUseCase legeArtikelInDenWarenkorbUseCase,
+                               ReduziereAnzahlVonArtikelInDemWarenkorbUseCase reduziereAnzahlVonArtikelInDemWarenkorbUseCase,
+                               EntferneArtikelAusDemWarenkorbUseCase entferneArtikelAusDemWarenkorbUseCase) {
+        this.getWarenkorbUseCase = getWarenkorbUseCase;
+        this.erstelleWarenkorbFuerKundeUseCase = erstelleWarenkorbFuerKundeUseCase;
+        this.legeArtikelInDenWarenkorbUseCase = legeArtikelInDenWarenkorbUseCase;
+        this.reduziereAnzahlVonArtikelInDemWarenkorbUseCase = reduziereAnzahlVonArtikelInDemWarenkorbUseCase;
+        this.entferneArtikelAusDemWarenkorbUseCase = entferneArtikelAusDemWarenkorbUseCase;
     }
 
     @PostMapping("/neuerWarenkorb")
@@ -29,7 +41,7 @@ public class WarenkorbController {
         try {
             UUID warenkorb = UUID.fromString(warenkorbID);
             UUID kunde = UUID.fromString(kundeID);
-            warenkorbUseCase.erstelleWarenkorbFuerKunde(warenkorb, kunde, maxEinkaufswert);
+            erstelleWarenkorbFuerKundeUseCase.erstelleWarenkorbFuerKunde(warenkorb, kunde, maxEinkaufswert);
             session.setAttribute("warenkorbID", warenkorb);
             return new ResponseEntity<>("Der Warenkorb wurde erfolgreich erstellt", HttpStatus.OK);
         } catch (IllegalArgumentException exception) {
@@ -40,8 +52,7 @@ public class WarenkorbController {
     @GetMapping("/")
     public ResponseEntity<WarenkorbModel> warenkorbAnzeigen(@ModelAttribute("warenkorbID") String warenkorbID) {
         WarenkorbModel warenkorb = WarenkorbModelMapper.INSTANCE
-            .vonWarenkorbZuModel(warenkorbUseCase.getWarenkorb(UUID.fromString(warenkorbID)));
-
+            .vonWarenkorbZuModel(getWarenkorbUseCase.getWarenkorb(UUID.fromString(warenkorbID)));
         return new ResponseEntity<>(warenkorb, HttpStatus.OK);
     }
 
@@ -52,9 +63,11 @@ public class WarenkorbController {
         try {
             UUID warenkorb = UUID.fromString(warenkorbID);
             UUID artikel = UUID.fromString(artikelID);
-            warenkorbUseCase.legeArtikelInDenWarenkorb(artikel, anzahl, warenkorb);
+            legeArtikelInDenWarenkorbUseCase.legeArtikelInDenWarenkorb(artikel, anzahl, warenkorb);
             return new ResponseEntity<>("Der Artikel wurde erfolgreich in den Warenkorb gelegt", HttpStatus.OK);
         } catch (IllegalArgumentException exception) {
+            //Wird hier nicht die Message aus dem Application- bzw. Domain-Layer verschluckt?
+            //Ggf. über eine Diverenzierung mit unterschiedlichen Typen nachdenken. Aber nur wenn Zeit ist.
             return new ResponseEntity<>("Der Artikel ist nicht verfügbar", HttpStatus.NOT_FOUND);
         }
     }
@@ -65,7 +78,7 @@ public class WarenkorbController {
         try {
             UUID warenkorb = UUID.fromString(warenkorbID);
             UUID artikel = UUID.fromString(artikelID);
-            warenkorbUseCase.entferneArtikelAusDemWarenkorb(artikel, warenkorb);
+            entferneArtikelAusDemWarenkorbUseCase.entferneArtikelAusDemWarenkorb(artikel, warenkorb);
             return new ResponseEntity<>("Der Artikel wurde erfolgreich aus dem Warenkorb entfernt", HttpStatus.OK);
         } catch (IllegalArgumentException exception) {
             return new ResponseEntity<>("Der Artikel konnte nicht entfernt werden", HttpStatus.NOT_FOUND);
@@ -79,7 +92,7 @@ public class WarenkorbController {
         try {
             UUID warenkorb = UUID.fromString(warenkorbID);
             UUID artikel = UUID.fromString(artikelID);
-            warenkorbUseCase.reduziereAnzahlVonArtikelInDemWarenkorb(artikel, anzahl, warenkorb);
+            reduziereAnzahlVonArtikelInDemWarenkorbUseCase.reduziereAnzahlVonArtikelInDemWarenkorb(artikel, anzahl, warenkorb);
             return new ResponseEntity<>("Die Anzahl von Artikel wurde erfolgreich reduziert", HttpStatus.OK);
         } catch (IllegalArgumentException exception) {
             return new ResponseEntity<>("Die Anzahl von Artikel konnte nicht reduziert werden", HttpStatus.NOT_FOUND);
