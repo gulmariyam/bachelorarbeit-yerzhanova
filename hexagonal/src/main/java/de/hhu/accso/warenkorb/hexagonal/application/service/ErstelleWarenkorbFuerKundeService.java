@@ -3,7 +3,7 @@ package de.hhu.accso.warenkorb.hexagonal.application.service;
 import de.hhu.accso.warenkorb.hexagonal.application.port.in.ErstelleWarenkorbFuerKundeUseCase;
 import de.hhu.accso.warenkorb.hexagonal.application.port.out.WarenkorbRepository;
 import de.hhu.accso.warenkorb.hexagonal.domain.model.kunde.KundeID;
-import de.hhu.accso.warenkorb.hexagonal.domain.model.preis.Preis;
+import de.hhu.accso.warenkorb.hexagonal.domain.model.shared.preis.Preis;
 import de.hhu.accso.warenkorb.hexagonal.domain.model.warenkorb.Warenkorb;
 import de.hhu.accso.warenkorb.hexagonal.domain.model.warenkorb.WarenkorbID;
 

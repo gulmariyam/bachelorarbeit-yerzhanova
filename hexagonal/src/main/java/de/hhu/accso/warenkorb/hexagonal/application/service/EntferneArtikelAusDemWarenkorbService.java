@@ -4,7 +4,7 @@ import de.hhu.accso.warenkorb.hexagonal.application.port.in.EntferneArtikelAusDe
 import de.hhu.accso.warenkorb.hexagonal.application.port.out.ArtikelRepository;
 import de.hhu.accso.warenkorb.hexagonal.application.port.out.LagerRepository;
 import de.hhu.accso.warenkorb.hexagonal.application.port.out.WarenkorbRepository;
-import de.hhu.accso.warenkorb.hexagonal.domain.model.anzahl.Anzahl;
+import de.hhu.accso.warenkorb.hexagonal.domain.model.shared.anzahl.Anzahl;
 import de.hhu.accso.warenkorb.hexagonal.domain.model.artikel.Artikel;
 import de.hhu.accso.warenkorb.hexagonal.domain.model.artikel.ArtikelID;
 import de.hhu.accso.warenkorb.hexagonal.domain.model.lager.Lager;

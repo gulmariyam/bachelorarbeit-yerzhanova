@@ -1,13 +1,11 @@
 package de.hhu.accso.warenkorb.hexagonal.domain.model.warenkorb;
 
-import de.hhu.accso.warenkorb.hexagonal.domain.model.anzahl.Anzahl;
+import de.hhu.accso.warenkorb.hexagonal.domain.model.shared.anzahl.Anzahl;
 import de.hhu.accso.warenkorb.hexagonal.domain.model.artikel.Artikel;
 import de.hhu.accso.warenkorb.hexagonal.domain.model.artikel.ArtikelID;
-import de.hhu.accso.warenkorb.hexagonal.domain.factory.WarenkorbzeileFactory;
 import de.hhu.accso.warenkorb.hexagonal.domain.model.kunde.KundeID;
-import de.hhu.accso.warenkorb.hexagonal.domain.model.preis.Preis;
+import de.hhu.accso.warenkorb.hexagonal.domain.model.shared.preis.Preis;
 import de.hhu.accso.warenkorb.hexagonal.domain.stereotypes.AggregateRoot;
-import de.hhu.accso.warenkorb.hexagonal.domain.model.warenkorbzeile.Warenkorbzeile;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;

@@ -1,7 +1,7 @@
 package de.hhu.accso.warenkorb.hexagonal.adapter.in.web.api;
 
-import de.hhu.accso.warenkorb.hexagonal.adapter.in.web.mapper.WarenkorbModelMapper;
-import de.hhu.accso.warenkorb.hexagonal.adapter.in.web.models.WarenkorbModel;
+import de.hhu.accso.warenkorb.hexagonal.adapter.in.web.warenkorb.WarenkorbModelMapper;
+import de.hhu.accso.warenkorb.hexagonal.adapter.in.web.warenkorb.WarenkorbModel;
 import de.hhu.accso.warenkorb.hexagonal.application.port.in.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

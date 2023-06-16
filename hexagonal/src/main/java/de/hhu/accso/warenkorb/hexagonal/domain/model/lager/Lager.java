@@ -1,8 +1,7 @@
 package de.hhu.accso.warenkorb.hexagonal.domain.model.lager;
 
-import de.hhu.accso.warenkorb.hexagonal.domain.model.anzahl.Anzahl;
+import de.hhu.accso.warenkorb.hexagonal.domain.model.shared.anzahl.Anzahl;
 import de.hhu.accso.warenkorb.hexagonal.domain.model.artikel.ArtikelID;
-import de.hhu.accso.warenkorb.hexagonal.domain.model.lagerbestand.Lagerbestand;
 
 import java.util.ArrayList;
 import java.util.List;
