@@ -1,7 +1,7 @@
 package de.hhu.accso.warenkorb.clean.adapter.presentation.api;
 
-import de.hhu.accso.warenkorb.clean.adapter.presentation.mapper.WarenkorbModelMapper;
-import de.hhu.accso.warenkorb.clean.adapter.presentation.models.WarenkorbModel;
+import de.hhu.accso.warenkorb.clean.adapter.presentation.warenkorb.WarenkorbModelMapper;
+import de.hhu.accso.warenkorb.clean.adapter.presentation.warenkorb.WarenkorbModel;
 import de.hhu.accso.warenkorb.clean.application.usecase.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

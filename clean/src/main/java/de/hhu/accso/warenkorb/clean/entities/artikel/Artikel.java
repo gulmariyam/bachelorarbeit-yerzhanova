@@ -1,6 +1,6 @@
 package de.hhu.accso.warenkorb.clean.entities.artikel;
 
-import de.hhu.accso.warenkorb.clean.entities.preis.Preis;
+import de.hhu.accso.warenkorb.clean.entities.shared.preis.Preis;
 
 public record Artikel(ArtikelID artikelID, String name, Preis preis) {
     public Artikel {

@@ -1,13 +1,11 @@
 package de.hhu.accso.warenkorb.clean.entities.warenkorb;
 
-import de.hhu.accso.warenkorb.clean.entities.anzahl.Anzahl;
+import de.hhu.accso.warenkorb.clean.entities.shared.anzahl.Anzahl;
 import de.hhu.accso.warenkorb.clean.entities.artikel.Artikel;
 import de.hhu.accso.warenkorb.clean.entities.artikel.ArtikelID;
 import de.hhu.accso.warenkorb.clean.entities.kunde.KundeID;
-import de.hhu.accso.warenkorb.clean.entities.preis.Preis;
+import de.hhu.accso.warenkorb.clean.entities.shared.preis.Preis;
 import de.hhu.accso.warenkorb.clean.entities.stereotypes.AggregateRoot;
-import de.hhu.accso.warenkorb.clean.entities.warenkorbzeile.Warenkorbzeile;
-import de.hhu.accso.warenkorb.clean.entities.factory.WarenkorbzeileFactory;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;

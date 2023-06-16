@@ -2,12 +2,12 @@ package de.hhu.accso.warenkorb.clean.application.interactor;
 
 import de.hhu.accso.warenkorb.clean.application.repository.LagerRepository;
 import de.hhu.accso.warenkorb.clean.application.usecase.*;
-import de.hhu.accso.warenkorb.clean.entities.anzahl.Anzahl;
+import de.hhu.accso.warenkorb.clean.entities.shared.anzahl.Anzahl;
 import de.hhu.accso.warenkorb.clean.entities.artikel.Artikel;
 import de.hhu.accso.warenkorb.clean.entities.artikel.ArtikelID;
 import de.hhu.accso.warenkorb.clean.entities.kunde.KundeID;
 import de.hhu.accso.warenkorb.clean.entities.lager.Lager;
-import de.hhu.accso.warenkorb.clean.entities.preis.Preis;
+import de.hhu.accso.warenkorb.clean.entities.shared.preis.Preis;
 import de.hhu.accso.warenkorb.clean.entities.warenkorb.Warenkorb;
 import de.hhu.accso.warenkorb.clean.entities.warenkorb.WarenkorbID;
 import de.hhu.accso.warenkorb.clean.application.repository.ArtikelRepository;

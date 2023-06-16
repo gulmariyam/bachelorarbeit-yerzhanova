@@ -1,8 +1,7 @@
 package de.hhu.accso.warenkorb.clean.entities.lager;
 
-import de.hhu.accso.warenkorb.clean.entities.anzahl.Anzahl;
+import de.hhu.accso.warenkorb.clean.entities.shared.anzahl.Anzahl;
 import de.hhu.accso.warenkorb.clean.entities.artikel.ArtikelID;
-import de.hhu.accso.warenkorb.clean.entities.lagerbestand.Lagerbestand;
 
 import java.util.ArrayList;
 import java.util.List;
