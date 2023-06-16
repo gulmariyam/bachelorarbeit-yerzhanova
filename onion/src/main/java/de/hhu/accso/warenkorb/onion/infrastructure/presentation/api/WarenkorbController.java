@@ -1,8 +1,8 @@
 package de.hhu.accso.warenkorb.onion.infrastructure.presentation.api;
 
 import de.hhu.accso.warenkorb.onion.application.services.ApplicationService;
-import de.hhu.accso.warenkorb.onion.infrastructure.presentation.mapper.WarenkorbModelMapper;
-import de.hhu.accso.warenkorb.onion.infrastructure.presentation.models.WarenkorbModel;
+import de.hhu.accso.warenkorb.onion.infrastructure.presentation.warenkorb.WarenkorbModelMapper;
+import de.hhu.accso.warenkorb.onion.infrastructure.presentation.warenkorb.WarenkorbModel;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

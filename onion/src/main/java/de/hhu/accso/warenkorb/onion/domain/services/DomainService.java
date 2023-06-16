@@ -1,6 +1,6 @@
 package de.hhu.accso.warenkorb.onion.domain.services;
 
-import de.hhu.accso.warenkorb.onion.domain.model.anzahl.Anzahl;
+import de.hhu.accso.warenkorb.onion.domain.model.shared.anzahl.Anzahl;
 import de.hhu.accso.warenkorb.onion.domain.model.artikel.Artikel;
 import de.hhu.accso.warenkorb.onion.domain.model.lager.Lager;
 import de.hhu.accso.warenkorb.onion.domain.model.warenkorb.Warenkorb;

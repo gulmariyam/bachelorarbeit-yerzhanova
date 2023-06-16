@@ -1,6 +1,6 @@
 package de.hhu.accso.warenkorb.onion.domain.model.artikel;
 
-import de.hhu.accso.warenkorb.onion.domain.model.preis.Preis;
+import de.hhu.accso.warenkorb.onion.domain.model.shared.preis.Preis;
 
 public record Artikel(ArtikelID artikelID, String name, Preis preis) {
     public Artikel {

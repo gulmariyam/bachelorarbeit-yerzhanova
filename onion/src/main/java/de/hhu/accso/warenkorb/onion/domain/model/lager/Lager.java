@@ -1,8 +1,7 @@
 package de.hhu.accso.warenkorb.onion.domain.model.lager;
 
-import de.hhu.accso.warenkorb.onion.domain.model.anzahl.Anzahl;
+import de.hhu.accso.warenkorb.onion.domain.model.shared.anzahl.Anzahl;
 import de.hhu.accso.warenkorb.onion.domain.model.artikel.ArtikelID;
-import de.hhu.accso.warenkorb.onion.domain.model.lagerbestand.Lagerbestand;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,11 +1,11 @@
 package de.hhu.accso.warenkorb.onion.application.services;
 
-import de.hhu.accso.warenkorb.onion.domain.model.anzahl.Anzahl;
+import de.hhu.accso.warenkorb.onion.domain.model.shared.anzahl.Anzahl;
 import de.hhu.accso.warenkorb.onion.domain.model.artikel.Artikel;
 import de.hhu.accso.warenkorb.onion.domain.model.artikel.ArtikelID;
 import de.hhu.accso.warenkorb.onion.domain.model.kunde.KundeID;
 import de.hhu.accso.warenkorb.onion.domain.model.lager.Lager;
-import de.hhu.accso.warenkorb.onion.domain.model.preis.Preis;
+import de.hhu.accso.warenkorb.onion.domain.model.shared.preis.Preis;
 import de.hhu.accso.warenkorb.onion.domain.model.warenkorb.Warenkorb;
 import de.hhu.accso.warenkorb.onion.domain.model.warenkorb.WarenkorbID;
 import de.hhu.accso.warenkorb.onion.domain.repository.ArtikelRepository;
