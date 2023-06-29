@@ -2,7 +2,7 @@ package de.hhu.accso.onion.warenkorb.infrastructure.persistence.warenkorb;
 
 import de.hhu.accso.onion.warenkorb.domain.model.warenkorb.Warenkorb;
 import de.hhu.accso.onion.warenkorb.domain.model.warenkorb.WarenkorbID;
-import de.hhu.accso.onion.warenkorb.domain.repository.WarenkorbRepository;
+import de.hhu.accso.onion.warenkorb.domain.services.warenkorb.WarenkorbRepository;
 
 public class WarenkorbRepositoryImplementation implements WarenkorbRepository {
     private final WarenkorbDAO warenkorbDAO;

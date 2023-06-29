@@ -1,4 +1,4 @@
-package de.hhu.accso.clean.warenkorb.application.repository;
+package de.hhu.accso.clean.warenkorb.application.artikel;
 
 import de.hhu.accso.clean.warenkorb.entities.artikel.Artikel;
 import de.hhu.accso.clean.warenkorb.entities.artikel.ArtikelID;

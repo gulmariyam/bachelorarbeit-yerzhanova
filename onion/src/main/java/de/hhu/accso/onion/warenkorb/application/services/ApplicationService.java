@@ -7,10 +7,10 @@ import de.hhu.accso.onion.warenkorb.domain.model.lager.Lager;
 import de.hhu.accso.onion.warenkorb.domain.model.shared.anzahl.Anzahl;
 import de.hhu.accso.onion.warenkorb.domain.model.warenkorb.Warenkorb;
 import de.hhu.accso.onion.warenkorb.domain.model.warenkorb.WarenkorbID;
-import de.hhu.accso.onion.warenkorb.domain.repository.ArtikelRepository;
-import de.hhu.accso.onion.warenkorb.domain.repository.WarenkorbRepository;
+import de.hhu.accso.onion.warenkorb.domain.services.artikel.ArtikelRepository;
+import de.hhu.accso.onion.warenkorb.domain.services.warenkorb.WarenkorbRepository;
 import de.hhu.accso.onion.warenkorb.domain.model.shared.preis.Preis;
-import de.hhu.accso.onion.warenkorb.domain.repository.LagerRepository;
+import de.hhu.accso.onion.warenkorb.domain.services.lager.LagerRepository;
 import de.hhu.accso.onion.warenkorb.domain.services.DomainService;
 import org.springframework.stereotype.Service;
 

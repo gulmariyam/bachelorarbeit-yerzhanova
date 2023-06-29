@@ -1,7 +1,7 @@
-package de.hhu.accso.onion.warenkorb.domain.repository;
+package de.hhu.accso.clean.warenkorb.application.lager;
 
-import de.hhu.accso.onion.warenkorb.domain.model.lager.Lager;
-import de.hhu.accso.onion.warenkorb.domain.model.lager.LagerID;
+import de.hhu.accso.clean.warenkorb.entities.lager.Lager;
+import de.hhu.accso.clean.warenkorb.entities.lager.LagerID;
 import org.springframework.stereotype.Repository;
 
 import java.util.UUID;

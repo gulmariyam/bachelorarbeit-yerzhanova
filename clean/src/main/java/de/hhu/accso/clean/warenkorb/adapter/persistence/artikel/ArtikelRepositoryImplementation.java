@@ -2,7 +2,7 @@ package de.hhu.accso.clean.warenkorb.adapter.persistence.artikel;
 
 import de.hhu.accso.clean.warenkorb.entities.artikel.Artikel;
 import de.hhu.accso.clean.warenkorb.entities.artikel.ArtikelID;
-import de.hhu.accso.clean.warenkorb.application.repository.ArtikelRepository;
+import de.hhu.accso.clean.warenkorb.application.artikel.ArtikelRepository;
 
 public class ArtikelRepositoryImplementation implements ArtikelRepository {
 

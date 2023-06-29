@@ -1,6 +1,6 @@
 package de.hhu.accso.onion.warenkorb.infrastructure.presentation.warenkorb;
 
-import de.hhu.accso.onion.warenkorb.domain.model.warenkorb.Warenkorbzeile;
+import de.hhu.accso.onion.warenkorb.domain.model.warenkorb.warenkorbzeile.Warenkorbzeile;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 

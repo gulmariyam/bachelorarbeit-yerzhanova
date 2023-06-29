@@ -2,7 +2,7 @@ package de.hhu.accso.onion.warenkorb.infrastructure.persistence.artikel;
 
 import de.hhu.accso.onion.warenkorb.domain.model.artikel.Artikel;
 import de.hhu.accso.onion.warenkorb.domain.model.artikel.ArtikelID;
-import de.hhu.accso.onion.warenkorb.domain.repository.ArtikelRepository;
+import de.hhu.accso.onion.warenkorb.domain.services.artikel.ArtikelRepository;
 
 public class ArtikelRepositoryImplementation implements ArtikelRepository {
 

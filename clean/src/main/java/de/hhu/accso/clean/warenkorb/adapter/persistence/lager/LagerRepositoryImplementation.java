@@ -1,6 +1,6 @@
 package de.hhu.accso.clean.warenkorb.adapter.persistence.lager;
 
-import de.hhu.accso.clean.warenkorb.application.repository.LagerRepository;
+import de.hhu.accso.clean.warenkorb.application.lager.LagerRepository;
 import de.hhu.accso.clean.warenkorb.entities.lager.Lager;
 import de.hhu.accso.clean.warenkorb.entities.lager.LagerID;
 

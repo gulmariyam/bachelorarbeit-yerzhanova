@@ -1,8 +1,8 @@
 package de.hhu.accso.clean.warenkorb.application.interactor;
 
-import de.hhu.accso.clean.warenkorb.application.repository.ArtikelRepository;
-import de.hhu.accso.clean.warenkorb.application.repository.LagerRepository;
-import de.hhu.accso.clean.warenkorb.application.repository.WarenkorbRepository;
+import de.hhu.accso.clean.warenkorb.application.artikel.ArtikelRepository;
+import de.hhu.accso.clean.warenkorb.application.lager.LagerRepository;
+import de.hhu.accso.clean.warenkorb.application.warenkorb.WarenkorbRepository;
 import de.hhu.accso.clean.warenkorb.application.usecase.*;
 import de.hhu.accso.clean.warenkorb.entities.artikel.Artikel;
 import de.hhu.accso.clean.warenkorb.entities.artikel.ArtikelID;

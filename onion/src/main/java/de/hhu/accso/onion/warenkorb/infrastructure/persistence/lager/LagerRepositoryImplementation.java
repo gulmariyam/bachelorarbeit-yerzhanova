@@ -2,7 +2,7 @@ package de.hhu.accso.onion.warenkorb.infrastructure.persistence.lager;
 
 import de.hhu.accso.onion.warenkorb.domain.model.lager.Lager;
 import de.hhu.accso.onion.warenkorb.domain.model.lager.LagerID;
-import de.hhu.accso.onion.warenkorb.domain.repository.LagerRepository;
+import de.hhu.accso.onion.warenkorb.domain.services.lager.LagerRepository;
 
 import java.util.UUID;
 

@@ -1,4 +1,4 @@
-package de.hhu.accso.onion.warenkorb.domain.model.warenkorb;
+package de.hhu.accso.onion.warenkorb.domain.model.warenkorb.warenkorbzeile;
 
 import java.util.UUID;
 

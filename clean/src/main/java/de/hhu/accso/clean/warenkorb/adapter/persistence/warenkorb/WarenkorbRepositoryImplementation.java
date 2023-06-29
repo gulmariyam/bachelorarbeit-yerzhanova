@@ -2,7 +2,7 @@ package de.hhu.accso.clean.warenkorb.adapter.persistence.warenkorb;
 
 import de.hhu.accso.clean.warenkorb.entities.warenkorb.Warenkorb;
 import de.hhu.accso.clean.warenkorb.entities.warenkorb.WarenkorbID;
-import de.hhu.accso.clean.warenkorb.application.repository.WarenkorbRepository;
+import de.hhu.accso.clean.warenkorb.application.warenkorb.WarenkorbRepository;
 
 public class WarenkorbRepositoryImplementation implements WarenkorbRepository {
     private final WarenkorbDAO warenkorbDAO;

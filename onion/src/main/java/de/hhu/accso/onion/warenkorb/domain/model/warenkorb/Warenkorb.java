@@ -5,6 +5,8 @@ import de.hhu.accso.onion.warenkorb.domain.model.artikel.Artikel;
 import de.hhu.accso.onion.warenkorb.domain.model.artikel.ArtikelID;
 import de.hhu.accso.onion.warenkorb.domain.model.kunde.KundeID;
 import de.hhu.accso.onion.warenkorb.domain.model.shared.preis.Preis;
+import de.hhu.accso.onion.warenkorb.domain.model.warenkorb.warenkorbzeile.Warenkorbzeile;
+import de.hhu.accso.onion.warenkorb.domain.model.warenkorb.warenkorbzeile.WarenkorbzeileFactory;
 import de.hhu.accso.onion.warenkorb.domain.stereotypes.AggregateRoot;
 
 import java.math.BigDecimal;

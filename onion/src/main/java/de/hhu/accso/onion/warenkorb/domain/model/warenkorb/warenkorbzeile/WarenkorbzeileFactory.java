@@ -1,4 +1,4 @@
-package de.hhu.accso.onion.warenkorb.domain.model.warenkorb;
+package de.hhu.accso.onion.warenkorb.domain.model.warenkorb.warenkorbzeile;
 
 import de.hhu.accso.onion.warenkorb.domain.model.shared.anzahl.Anzahl;
 import de.hhu.accso.onion.warenkorb.domain.model.artikel.Artikel;

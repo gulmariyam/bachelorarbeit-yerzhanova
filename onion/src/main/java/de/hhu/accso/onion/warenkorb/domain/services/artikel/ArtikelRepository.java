@@ -1,4 +1,4 @@
-package de.hhu.accso.onion.warenkorb.domain.repository;
+package de.hhu.accso.onion.warenkorb.domain.services.artikel;
 
 import de.hhu.accso.onion.warenkorb.domain.model.artikel.Artikel;
 import de.hhu.accso.onion.warenkorb.domain.model.artikel.ArtikelID;

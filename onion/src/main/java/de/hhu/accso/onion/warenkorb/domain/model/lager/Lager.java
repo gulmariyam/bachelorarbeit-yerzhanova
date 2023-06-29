@@ -1,5 +1,6 @@
 package de.hhu.accso.onion.warenkorb.domain.model.lager;
 
+import de.hhu.accso.onion.warenkorb.domain.model.lager.lagerbestand.Lagerbestand;
 import de.hhu.accso.onion.warenkorb.domain.model.shared.anzahl.Anzahl;
 import de.hhu.accso.onion.warenkorb.domain.model.artikel.ArtikelID;
 
