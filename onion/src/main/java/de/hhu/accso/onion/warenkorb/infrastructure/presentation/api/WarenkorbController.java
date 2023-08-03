@@ -33,8 +33,6 @@ public class WarenkorbController {
             session.setAttribute("warenkorbID", warenkorb);
             return new ResponseEntity<>("Der Warenkorb wurde erfolgreich erstellt", HttpStatus.OK);
         } catch (IllegalArgumentException exception) {
-            //Wird hier nicht die Message aus dem Application- bzw. Domain-Layer verschluckt?
-            //Ggf. über eine Diverenzierung mit unterschiedlichen Typen nachdenken. Aber nur wenn Zeit ist.
             return new ResponseEntity<>("Fehler beim Erstellen des Warenkorbs", HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }

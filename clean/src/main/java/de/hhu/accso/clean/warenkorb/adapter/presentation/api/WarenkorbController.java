@@ -66,8 +66,6 @@ public class WarenkorbController {
             legeArtikelInDenWarenkorbUseCase.legeArtikelInDenWarenkorb(artikel, anzahl, warenkorb);
             return new ResponseEntity<>("Der Artikel wurde erfolgreich in den Warenkorb gelegt", HttpStatus.OK);
         } catch (IllegalArgumentException exception) {
-            //Wird hier nicht die Message aus dem Application- bzw. Domain-Layer verschluckt?
-            //Ggf. über eine Diverenzierung mit unterschiedlichen Typen nachdenken. Aber nur wenn Zeit ist.
             return new ResponseEntity<>("Der Artikel ist nicht verfügbar", HttpStatus.NOT_FOUND);
         }
     }
